@@ -9,7 +9,7 @@
   38 and 40. The keyReleased function below takes these inputs.
   As long as your input can send those five different byte values, 
   you won't have to touch the rest of the game.
-  created 15 July 2020
+  created 15 July 2020 
   by Tom Igoe
   based on a version I did in Processing from 24 Jan 2011
 */
