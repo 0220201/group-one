@@ -26,8 +26,8 @@ function draw() {
   paddle2();
   //Score
   textSize(15);
-  text("CPU:" + computer,0,15);
-  text("Player:" + player,320,15);
+  text("CPU:£" + computer,0,15);
+  text("Player:£" + player,320,15);
   
 }
 //Bounce back from sides of the canvas and game over
@@ -35,19 +35,23 @@ function bounce() {
   if (xBall < 10 || xBall > 390) {
     xSpeed = -xSpeed;
   }
+  if (yBall < 10 || yBall > 390) {
+    ySpeed = -ySpeed;
+  }
   //change all text
   if (yBall < 10 || yBall > 390) {
-    noLoop();
     textSize(20);
-    text("GAME OVER: CLICK TO RESTART",40,200);
+    //text("GAME OVER: CLICK TO RESTART",40,200);
     if (computer > player){
-	text("Computer Wins",130,150);
+	//text("Computer Wins",130,150);
+  player = player - 50;
 	}
 	if (computer < player){
-	text("Player Wins",130,150);
+	//text("Player Wins",130,150);
 	}
 	if (computer == player){
-	text("IT'S A TIE",130,150);
+	//text("PAY YA MUM",130,150);
+  player = player - 50;
 	}
 	
   }
@@ -75,6 +79,27 @@ function mousePressed() {
   computer = 500
   loop();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // /*
 //   Two-player Pong™ derivative game. 
