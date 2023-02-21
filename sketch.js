@@ -4,8 +4,8 @@ var xBall = 200;
 var yBall = 200;
 var xSpeed = 4;
 var ySpeed = -2;
-var player = 0; //change this value for the starting score
-var computer = 0; //change this value for the starting score
+var player = 500; //change this value for the starting score
+var computer = 500; //change this value for the starting score
 function setup() {
   createCanvas(400, 400);
   noLoop();
@@ -56,14 +56,14 @@ function bounce() {
 function paddle1() {
   if ((xBall > mouseX && xBall < mouseX + 100) && (yBall >= 370)) {
     ySpeed = -ySpeed; 
-    player = player + 1;
+    player = player + 50;
   }
 }
 //Bounce from computer paddle
 function paddle2() {
   if (yBall <= 40) {
     ySpeed = -ySpeed; 
-    computer = computer + 1;
+    computer = computer + 50;
   }
 }
 
@@ -71,8 +71,8 @@ function paddle2() {
 function mousePressed() {
   xBall = 200;
   yBall = 200;
-  player = 0
-  computer = 0
+  player = 500
+  computer = 500
   loop();
 }
 
