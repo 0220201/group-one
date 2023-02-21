@@ -1,3 +1,5 @@
+//https://replit.com/talk/share/Pong-Game-in-p5js/141901 - ORIGINAL CODE SOURCE
+
 /*
   Two-player Pong™ derivative game. 
   This is a template for making your own Pong-game. It supports two players, 
@@ -24,7 +26,7 @@ const PADDLE_MOVE_DISTANCE = 20;  // minimum move of each paddle
 
 // make two players:
 let playerList;
-// make the ball:
+// make the ball: - CHANGE THIS TO A RAT
 let ball = {
   size: 10,    // ball size
   direction: { // direction, X and Y increments
@@ -36,6 +38,7 @@ let ball = {
   moving: false   // whether it's currently moving or not
 }
 
+//CHANGE THESE RULES SO THE GAME DOESN'T END
 let gameOver = true;       // whether or not a game is in progress
 let delayCounter;          // a counter for the delay after an event
 let gameOverDelay = 4000;  // pause after each game
@@ -49,6 +52,7 @@ function setup() {
   // you know the size of the window:
   playerList = [
     // left player:
+    //CHANGE PADELS TO BIN LIDS
     {
       paddleH: 30,
       paddleV: height / 2,
