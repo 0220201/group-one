@@ -4,8 +4,8 @@ var xBall = 200;
 var yBall = 200;
 var xSpeed = 4;
 var ySpeed = -2;
-var player = 500; //change this value for the starting score
-var computer = 500; //change this value for the starting score
+var player = 8000; //change this value for the starting score
+var computer = 25000; //change this value for the starting score
 function setup() {
   createCanvas(400, 400);
   noLoop();
@@ -35,16 +35,18 @@ function bounce() {
   if (xBall < 10 || xBall > 390) {
     xSpeed = -xSpeed;
   }
-  if (yBall < 10 || yBall > 390) {
+  if (yBall < 10 || yBall > 420) {
     ySpeed = -ySpeed;
   }
   //change all text
-  if (yBall < 10 || yBall > 390) {
+  if (yBall < 10 || yBall > 420) {
     textSize(20);
-    //text("GAME OVER: CLICK TO RESTART",40,200);
+    noLoop();
+    
+    text("PAY YOUR TAXES", 120, 200);
     if (computer > player){
 	//text("Computer Wins",130,150);
-  player = player - 50;
+  player = player - 150;
 	}
 	if (computer < player){
 	//text("Player Wins",130,150);
@@ -75,8 +77,6 @@ function paddle2() {
 function mousePressed() {
   xBall = 200;
   yBall = 200;
-  player = 500
-  computer = 500
   loop();
 }
 
