@@ -9,6 +9,7 @@ var player = 8000; //change this value for the starting score
 var computer = 25000; //change this value for the starting score
 //=======
 var rat;
+var myFont
 
 
 let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BILL", "TV LISCENSE", "PAY UTILITY BILLS"];
@@ -16,13 +17,14 @@ let currentIndex = 0;
 
 function preload(){
   rat = loadImage("rat.png");
+  myFont = loadFont("font.ttf");
 }
 
 //>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
 function setup() {
   createCanvas(400, 400);
   noLoop(); //stops the background from constantly being redrawn when the game resets
-
+  textFont(myFont);
 }
 
 
@@ -73,7 +75,7 @@ let word = random(words);
   if (yBall < 10 || yBall > 420) {
     textSize(20);
     noLoop();
-    
+    textSize(32);
     text(word, 100, 200);
     if (computer > player){
 	//text("Computer Wins",130,150);
