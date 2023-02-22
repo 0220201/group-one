@@ -1,41 +1,65 @@
 //https://replit.com/talk/share/Pong-Game-in-p5js/141901 - ORIGINAL CODE SOURCE
 
-var xBall = 200;
-var yBall = 200;
+var xBall = 200; //ball starting position 
+var yBall = 200; //ball starting position 
 var xSpeed = 4;
 var ySpeed = -2;
+//<<<<<<< HEAD
 var player = 8000; //change this value for the starting score
 var computer = 25000; //change this value for the starting score
+//=======
+var player = 500; //starting score value 
+var computer = 500; //starting score value 
+
+let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BILL", "TV LISCENSE", "PAY UTILITY BILLS"];
+let currentIndex = 0;
+
+//>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
 function setup() {
   createCanvas(400, 400);
-  noLoop();
+  noLoop(); //stops the background from constantly being redrawn when the game resets
+
 }
+
+
 function draw() {
   background('black');
   xBall = xBall + xSpeed;
   yBall = yBall + ySpeed;
   fill('white');
-  //Player-Paddle1
-  rect(mouseX, 380, 100, 10); //change to bin lid
-  //Computer-Paddle2
-  rect(xBall-50,20,100,10); //change to bin lid
-  circle(xBall, yBall, 20); //change to rat
+
+  //Player-Paddle1 - change mouseX to button or joystick for console version
+  rect(mouseX, 380, 100, 10); //change rect to bin lid
+
+  //Computer-Paddle2 
+  rect(xBall-50,20,100,10); //change rect to bin lid
+  circle(xBall, yBall, 20); //change circle to rat
+  
   //Function calls
   bounce();
   paddle1();
   paddle2();
+  
   //Score
   textSize(15);
   text("CPU:£" + computer,0,15);
   text("Player:£" + player,320,15);
-  
+
+  // animateText();
 }
+
+
 //Bounce back from sides of the canvas and game over
 function bounce() {
+  //defines the space in which the ball can move (bounces off the 'walls' of the canvas)
   if (xBall < 10 || xBall > 390) {
     xSpeed = -xSpeed;
   }
+//<<<<<<< HEAD
   if (yBall < 10 || yBall > 420) {
+//=======
+  if (yBall < 10 || yBall > 410) { //410 means the ball is allowed to bounce off-canvas at the bottom (this accelerates the score loss)
+//>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
     ySpeed = -ySpeed;
   }
   //change all text
@@ -46,34 +70,54 @@ function bounce() {
     text("PAY YOUR TAXES", 120, 200);
     if (computer > player){
 	//text("Computer Wins",130,150);
+//<<<<<<< HEAD
   player = player - 150;
+//=======
+  player = player - 50; //subtracts £50 to the score
+//>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
 	}
 	if (computer < player){
 	//text("Player Wins",130,150);
 	}
 	if (computer == player){
 	//text("PAY YA MUM",130,150);
-  player = player - 50;
+  player = player - 50; //subtracts £50 to the score
 	}
 	
   }
-}
-//Bounce from player paddle
-function paddle1() {
-  if ((xBall > mouseX && xBall < mouseX + 100) && (yBall >= 370)) {
-    ySpeed = -ySpeed; 
-    player = player + 50;
-  }
-}
-//Bounce from computer paddle
-function paddle2() {
-  if (yBall <= 40) {
-    ySpeed = -ySpeed; 
-    computer = computer + 50;
   }
 }
 
-//Restart game on mouse press
+// function animateText(){ //THIS CODE DOESN'T WORK YET
+//     textSize(20);
+//     fill(255);
+//     textAlign(CENTER, CENTER);
+//     text(textArray[currentIndex], width/2, height/2);
+//     currentIndex = (currentIndex + 1) % textArray.length;
+    
+//     setTimeout(function() {
+//       clear();
+//       animateText();
+//     }, 15000);
+//   }
+
+//Bounce from player paddle - ball movement
+function paddle1() {
+  if ((xBall > mouseX && xBall < mouseX + 100) && (yBall >= 370)) {
+    ySpeed = -ySpeed; 
+    player = player + 50; //adds £50 to the score
+  }
+}
+
+//Bounce from computer paddle - ball movement 
+function paddle2() {
+  if (yBall <= 40) {
+    ySpeed = -ySpeed; 
+    computer = computer + 50; //adds £50 to the score
+  }
+}
+
+//Initialise the game on mouse press - can be changed to a button for the consol version
 function mousePressed() {
   xBall = 200;
   yBall = 200;
