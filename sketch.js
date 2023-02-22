@@ -8,11 +8,15 @@ var ySpeed = -2;
 var player = 8000; //change this value for the starting score
 var computer = 25000; //change this value for the starting score
 //=======
-var player = 500; //starting score value 
-var computer = 500; //starting score value 
+var rat;
+
 
 let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BILL", "TV LISCENSE", "PAY UTILITY BILLS"];
 let currentIndex = 0;
+
+function preload(){
+  rat = loadImage("rat.png");
+}
 
 //>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
 function setup() {
@@ -33,7 +37,7 @@ function draw() {
 
   //Computer-Paddle2 
   rect(xBall-50,20,100,10); //change rect to bin lid
-  circle(xBall, yBall, 20); //change circle to rat
+  image(rat,xBall, yBall, 60,60); //change circle to rat
   
   //Function calls
   bounce();
@@ -42,8 +46,8 @@ function draw() {
   
   //Score
   textSize(15);
-  text("CPU:£" + computer,0,15);
-  text("Player:£" + player,320,15);
+  text("CPU:£" + computer,10,15);
+  text("Player:£" + player,305,15);
 
   // animateText();
 }
@@ -51,6 +55,9 @@ function draw() {
 
 //Bounce back from sides of the canvas and game over
 function bounce() {
+let words = ['PAY YOUR TAXES','FEED YOUR CAT','YOU NEED FOOD, \nGO SHOPPING',"GET A PERSCRIPTION"];
+let word = random(words);
+
   //defines the space in which the ball can move (bounces off the 'walls' of the canvas)
   if (xBall < 10 || xBall > 390) {
     xSpeed = -xSpeed;
@@ -67,7 +74,7 @@ function bounce() {
     textSize(20);
     noLoop();
     
-    text("PAY YOUR TAXES", 120, 200);
+    text(word, 100, 200);
     if (computer > player){
 	//text("Computer Wins",130,150);
 //<<<<<<< HEAD
