@@ -4,10 +4,9 @@ var xBall = 200; //ball starting position
 var yBall = 200; //ball starting position 
 var xSpeed = 4;
 var ySpeed = -2;
-//<<<<<<< HEAD
 var player = 8000; //change this value for the starting score
 var computer = 25000; //change this value for the starting score
-//=======
+
 var rat;
 var myFont
 
@@ -20,7 +19,6 @@ function preload(){
   myFont = loadFont("font.ttf");
 }
 
-//>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
 function setup() {
   createCanvas(400, 400);
   noLoop(); //stops the background from constantly being redrawn when the game resets
@@ -39,7 +37,9 @@ function draw() {
 
   //Computer-Paddle2 
   rect(xBall-50,20,100,10); //change rect to bin lid
+
   image(rat, xBall, yBall, 20,20); //change circle to rat
+
   
   //Function calls
   bounce();
@@ -64,26 +64,19 @@ let word = random(words);
   if (xBall < 10 || xBall > 390) {
     xSpeed = -xSpeed;
   }
-//<<<<<<< HEAD
   if (yBall < 10 || yBall > 390) {
-//=======
-  if (yBall < 10 || yBall > 390) { //410 means the ball is allowed to bounce off-canvas at the bottom (this accelerates the score loss)
-//>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
+
     ySpeed = -ySpeed;
   }
   //change all text
-  if (yBall < 10 || yBall > 420) {
+  if (yBall < 10 || yBall > 400) {
     textSize(20);
     noLoop();
     textSize(32);
     text(word, 100, 200);
-    if (computer > player){
+  if (computer > player){
 	//text("Computer Wins",130,150);
-//<<<<<<< HEAD
   player = player - 150;
-//=======
-  player = player - 50; //subtracts £50 to the score
-//>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
 	}
 	if (computer < player){
 	//text("Player Wins",130,150);
@@ -92,23 +85,8 @@ let word = random(words);
 	//text("PAY YA MUM",130,150);
   player = player - 50; //subtracts £50 to the score
 	}
-	
   }
   }
-}
-
-// function animateText(){ //THIS CODE DOESN'T WORK YET
-//     textSize(20);
-//     fill(255);
-//     textAlign(CENTER, CENTER);
-//     text(textArray[currentIndex], width/2, height/2);
-//     currentIndex = (currentIndex + 1) % textArray.length;
-    
-//     setTimeout(function() {
-//       clear();
-//       animateText();
-//     }, 15000);
-//   }
 
 //Bounce from player paddle - ball movement
 function paddle1() {
