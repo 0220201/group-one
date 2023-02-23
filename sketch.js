@@ -15,7 +15,7 @@ let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BIL
 let currentIndex = 0;
 
 function preload(){
-  rat = loadImage("rat.png");
+  rat = loadImage("PINK_RAT.png");
   myFont = loadFont("font.ttf");
 }
 
@@ -61,11 +61,10 @@ let words = ['PAY YOUR TAXES','FEED YOUR CAT','YOU NEED FOOD, \nGO SHOPPING',"GE
 let word = random(words);
 
   //defines the space in which the ball can move (bounces off the 'walls' of the canvas)
-  if (xBall < 10 || xBall > 390) {
+  if (xBall < 10 || xBall > 400) {
     xSpeed = -xSpeed;
   }
-  if (yBall < 10 || yBall > 390) {
-
+  if (yBall < 10 || yBall > 400) {
     ySpeed = -ySpeed;
   }
   //change all text
@@ -110,14 +109,6 @@ function mousePressed() {
   yBall = 200;
   loop();
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -366,4 +357,97 @@ function mousePressed() {
 // function showPaddle(playerNumber) {
 //   let thisPlayer = playerList[playerNumber];
 //   rect(thisPlayer.paddleH, thisPlayer.paddleV, PADDLE_WIDTH, PADDLE_HEIGHT);
+// }
+
+
+
+
+
+
+// //https://editor.p5js.org/ehersh/sketches/Hk52gNXR7
+// var screen = 0;
+// var y=-20;
+// var x= 200;
+// var speed = 2;
+// var score= 0;
+
+// var myFont;
+// var rat;
+
+// function preload(){
+//   rat = loadImage("PINK_RAT.png");
+//   myFont = loadFont("font.ttf");
+// }
+
+// function setup() {
+//   createCanvas(600, 400);
+//   textFont(myFont);
+// }
+
+// function draw() {
+// 	if(screen == 0){
+//     startScreen()
+//   }else if(screen == 1){
+//   	gameOn()
+//   }else if(screen==2){
+//   	endScreen()
+//   }	
+// }
+
+// function startScreen(){
+// 		background(255, 157, 255)
+// 		fill(255)
+// 		textAlign(CENTER);
+// 		text('RAT & M', width / 2, height / 2) //add games description 
+//     //add rat&m logo
+// 		text('click to start', width / 2, height / 2 + 20);
+// 		reset();
+// }
+
+// function gameOn(){
+// 	background(0)
+//   text("score = " + score, 30,20)
+
+//   ellipse(x,y,20,20) //CLOTHES IMAGE ARRAY 
+//   rectMode(CENTER)
+//   image(rat,mouseX,height-30,50,30) //CHANGE TO RAT AND SEWING MACHINE
+// 	y+= speed;
+//   if(y>height){
+//   	screen =2
+// 	 }
+//   if(y>height-30 && x>mouseX-20 && x<mouseX+20){
+//   	y=-20
+//     speed+=.5
+//     score+= 1
+//   }
+// 	if(y==-20){
+//   	pickRandom();
+//   }
+// }
+
+// function pickRandom(){
+// 	x= random(20,width-20)
+// }
+
+// function endScreen(){
+// 		background(150)
+// 		textAlign(CENTER);
+// 		text('YOU FAILED TO REACH YOUR QUOTA', width / 2, height / 2) 
+//     //add dead rat image 
+//   	text("SCORE = " + score, width / 2, height / 2 + 20)
+// 		text('click to play again', width / 2, height / 2 + 40);
+// }
+
+// function mousePressed(){
+// 	if(screen==0){
+//   	screen=1
+//   }else if(screen==2){
+//   	screen=0
+//   }
+// }
+
+// function reset(){
+// 	  score=0;
+//   	speed=2;
+//   	y=-20;
 // }
