@@ -39,7 +39,7 @@ function draw() {
 
   //Computer-Paddle2 
   rect(xBall-50,20,100,10); //change rect to bin lid
-  image(rat,xBall, yBall, 60,60); //change circle to rat
+  image(rat,xBall, yBall, 20,20); //change circle to rat
   
   //Function calls
   bounce();
@@ -65,14 +65,14 @@ let word = random(words);
     xSpeed = -xSpeed;
   }
 //<<<<<<< HEAD
-  if (yBall < 10 || yBall > 420) {
+  if (yBall < 10 || yBall > 400) {
 //=======
   if (yBall < 10 || yBall > 410) { //410 means the ball is allowed to bounce off-canvas at the bottom (this accelerates the score loss)
 //>>>>>>> 323933143b7e34ae40601d1190d99a2b35311806
     ySpeed = -ySpeed;
   }
   //change all text
-  if (yBall < 10 || yBall > 420) {
+  if (yBall < 10 || yBall > 400) {
     textSize(20);
     noLoop();
     textSize(32);
