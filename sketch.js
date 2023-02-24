@@ -8,6 +8,7 @@ var player = 8000; //change this value for the starting score
 var computer = 25000; //change this value for the starting score
 
 var rat;
+var lid;
 var myFont
 
 
@@ -17,6 +18,8 @@ let currentIndex = 0;
 function preload(){
   rat = loadImage("PINK_RAT.png");
   myFont = loadFont("font.ttf");
+  lid = loadImage("bin_lid.png");
+  lidTwo = loadImage("bin_lid_cpu.png");
 }
 
 function setup() {
@@ -27,25 +30,27 @@ function setup() {
 
 
 function draw() {
-  background('black');
+  background(255,150,200);
   xBall = xBall + xSpeed;
   yBall = yBall + ySpeed;
   fill('white');
 
   //Player-Paddle1 - change mouseX to button or joystick for console version
-  rect(mouseX, 380, 100, 10); //change rect to bin lid
+  image(lid,mouseX, 360, 80, 30); //change rect to bin lid
 
   //Computer-Paddle2 
-  rect(xBall-50,20,100,10); //change rect to bin lid
+  image(lidTwo,xBall-50,20,80,30); //change rect to bin lid
 
-  image(rat, xBall, yBall, 20,20); //change circle to rat
+  image(rat, xBall, yBall, 30,30); //change circle to rat
 
   
   //Function calls
   bounce();
   paddle1();
   paddle2();
-  
+
+  // setTimeout(fail, 1000); attempt to make the game fail after x amount of time
+
   //Score
   textSize(15);
   text("CPU:£" + computer,10,15);
@@ -61,7 +66,7 @@ let words = ['PAY YOUR TAXES','FEED YOUR CAT','YOU NEED FOOD, \nGO SHOPPING',"GE
 let word = random(words);
 
   //defines the space in which the ball can move (bounces off the 'walls' of the canvas)
-  if (xBall < 10 || xBall > 400) {
+  if (xBall < 10 || xBall > 380) {
     xSpeed = -xSpeed;
   }
   if (yBall < 10 || yBall > 400) {
@@ -73,23 +78,24 @@ let word = random(words);
     noLoop();
     textSize(32);
     text(word, 100, 200);
-  if (computer > player){
+    xBall = xSpeed + 10; //speed up when the player loses
+  //if (computer > player){
 	//text("Computer Wins",130,150);
-  player = player - 150;
-	}
-	if (computer < player){
+  //player = player - 150;
+	//}
+	//if (computer < player){
 	//text("Player Wins",130,150);
-	}
-	if (computer == player){
+	//}
+	//if (computer == player){
 	//text("PAY YA MUM",130,150);
-  player = player - 50; //subtracts £50 to the score
-	}
+  //player = player - 50; //subtracts £50 to the score
+	//}
   }
   }
 
 //Bounce from player paddle - ball movement
 function paddle1() {
-  if ((xBall > mouseX && xBall < mouseX + 100) && (yBall >= 370)) {
+  if ((xBall > mouseX && xBall < mouseX + 100) && (yBall >= 335)) {
     ySpeed = -ySpeed; 
     player = player + 50; //adds £50 to the score
   }
@@ -97,7 +103,7 @@ function paddle1() {
 
 //Bounce from computer paddle - ball movement 
 function paddle2() {
-  if (yBall <= 40) {
+  if (yBall <= 50) {
     ySpeed = -ySpeed; 
     computer = computer + 50; //adds £50 to the score
   }
@@ -110,6 +116,15 @@ function mousePressed() {
   loop();
 }
 
+
+//doesnt work
+// function fail(){
+
+//   setTimeout(fail,1000);
+//   paddle1 = (20, 360, 80, 30);
+
+
+// }
 
 
 
