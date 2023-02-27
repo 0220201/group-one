@@ -11,6 +11,11 @@ var rat;
 var lid;
 var myFont
 
+let bg;
+let bg_two;
+let bg_three
+
+
 
 let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BILL", "TV LISCENSE", "PAY UTILITY BILLS"];
 let currentIndex = 0;
@@ -20,9 +25,16 @@ function preload(){
   myFont = loadFont("font.ttf");
   lid = loadImage("bin_lid.png");
   lidTwo = loadImage("bin_lid_cpu.png");
+
+  bg = loadImage('bottom_square.jpg');
+  bg_two = loadImage('top_square.jpg');
+  bg_three = loadImage('end_square.jpg');
 }
 
 function setup() {
+
+  mode = 0; //initially the game has not started
+
   createCanvas(400, 400);
   noLoop(); //stops the background from constantly being redrawn when the game resets
   textFont(myFont);
@@ -30,7 +42,13 @@ function setup() {
 
 
 function draw() {
-  background(255,150,200);
+
+  clear();
+  if (mode==0){
+    background(bg_two);
+  }
+  if (mode==1){
+  background(bg);
   xBall = xBall + xSpeed;
   yBall = yBall + ySpeed;
   fill('white');
@@ -55,6 +73,8 @@ function draw() {
   textSize(15);
   text("CPU:£" + computer,10,15);
   text("Player:£" + player,305,15);
+}
+
 
   // animateText();
 }
@@ -62,11 +82,13 @@ function draw() {
 
 //Bounce back from sides of the canvas and game over
 function bounce() {
-let words = ['PAY YOUR TAXES','FEED YOUR CAT','YOU NEED FOOD, \nGO SHOPPING',"GET A PERSCRIPTION"];
+let words = ['PAY YOUR TAXES','FEED YOUR CAT','YOU NEED FOOD, \nGO SHOPPING',"GET A PRESCRIPTION"];
 let word = random(words);
+let intArray = (int(500,2000));
+let intArrays = random(intArray);
 
   //defines the space in which the ball can move (bounces off the 'walls' of the canvas)
-  if (xBall < 10 || xBall > 380) {
+  if (xBall < 10 || xBall > 350) {
     xSpeed = -xSpeed;
   }
   if (yBall < 10 || yBall > 400) {
@@ -74,11 +96,14 @@ let word = random(words);
   }
   //change all text
   if (yBall < 10 || yBall > 400) {
+    background(bg_three);
     textSize(20);
     noLoop();
     textSize(32);
-    text(word, 100, 200);
-    xBall = xSpeed + 10; //speed up when the player loses
+    text(word, 100, 180);
+    text("-£"+ intArrays, 200,240)
+    player = player - intArrays;
+   //speed up when the player loses
   //if (computer > player){
 	//text("Computer Wins",130,150);
   //player = player - 150;
@@ -95,9 +120,9 @@ let word = random(words);
 
 //Bounce from player paddle - ball movement
 function paddle1() {
-  if ((xBall > mouseX && xBall < mouseX + 100) && (yBall >= 335)) {
+  if ((xBall > mouseX && xBall < mouseX + 10) && (yBall >= 335)) {
     ySpeed = -ySpeed; 
-    player = player + 50; //adds £50 to the score
+    player = player + 5; //adds £5 to the score
   }
 }
 
@@ -105,15 +130,20 @@ function paddle1() {
 function paddle2() {
   if (yBall <= 50) {
     ySpeed = -ySpeed; 
-    computer = computer + 50; //adds £50 to the score
+    computer = computer + 150; //adds £50 to the score
   }
 }
 
 //Initialise the game on mouse press - can be changed to a button for the consol version
 function mousePressed() {
+  if (mousePressed){
+  mode = 1;
   xBall = 200;
   yBall = 200;
+  background(bg_two);
   loop();
+  }
+
 }
 
 
