@@ -15,6 +15,8 @@ let bg;
 let bg_two;
 let bg_three
 
+//let a = 5;
+
 
 
 let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BILL", "TV LISCENSE", "PAY UTILITY BILLS"];
@@ -32,6 +34,8 @@ function preload(){
 }
 
 function setup() {
+
+  //angleMode(DEGREES); //spinning
 
   mode = 0; //initially the game has not started
 
@@ -58,9 +62,13 @@ function draw() {
 
   //Computer-Paddle2 
   image(lidTwo,xBall-50,20,80,30); //change rect to bin lid
-
+  
+  //push();
+  //translate(20,20)
+ // rotate(a);
+ // a=a+1;
   image(rat, xBall, yBall, 30,30); //change circle to rat
-
+ // pop();
   
   //Function calls
   bounce();
