@@ -8,10 +8,11 @@ var ySpeed = -2;
 var player = 8000; //change this value for the starting score
 var computer = 25000; //change this value for the starting score
 
-//Background, images and font variables
+//Background, images, audio and font variables
 var rat;
 var lid;
 var myFont
+var gameAudio;
 
 let bg;
 let bg_two;
@@ -33,8 +34,9 @@ function preload(){
   bg_two = loadImage('top_square.jpg');
   bg_three = loadImage('end_square.jpg');
 
-  //loads to game audio (does this work?)
-  gameAudio = loadSound('GameAudio.m4a');
+  //loads the game audio
+  gameAudio = loadSound('GameAudio.mp3');
+  
 }
 
 function setup() {
@@ -44,6 +46,7 @@ function setup() {
   createCanvas(400, 400);
   noLoop(); //stops the background from constantly being redrawn when the game resets
   textFont(myFont);
+
 }
 
 
@@ -133,10 +136,10 @@ function mousePressed() {
   yBall = 200;
   background(bg_two);
   loop();
-  }
 
+  gameAudio.play();
 }
-
+}
 
 
 
