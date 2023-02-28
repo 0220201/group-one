@@ -7,6 +7,7 @@ var ySpeed = -2;
 var player = 8000; //change this value for the starting score
 var computer = 25000; //change this value for the starting score
 
+//Background, images and font variables
 var rat;
 var lid;
 var myFont
@@ -17,11 +18,11 @@ let bg_three
 
 //let a = 5;
 
-
-
+//text arrays 
 let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BILL", "TV LISCENSE", "PAY UTILITY BILLS"];
 let currentIndex = 0;
 
+//called before the setup() - start page and background
 function preload(){
   rat = loadImage("PINK_RAT.png");
   myFont = loadFont("font.ttf");
