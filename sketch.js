@@ -1,5 +1,6 @@
 //https://replit.com/talk/share/Pong-Game-in-p5js/141901 - ORIGINAL CODE SOURCE
 
+//variables
 var xBall = 200; //ball starting position 
 var yBall = 200; //ball starting position 
 var xSpeed = 4;
@@ -16,13 +17,12 @@ let bg;
 let bg_two;
 let bg_three
 
-//let a = 5;
-
 //text arrays 
-let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BILL", "TV LISCENSE", "PAY UTILITY BILLS"];
+//let textArray = ["PAY YOUR TAXES", "TIME TO PAY RENT", "YOU OWE TFL", "PHONE BILL", "TV LISCENSE", "PAY UTILITY BILLS"];
+
 let currentIndex = 0;
 
-//called before the setup() - start page and background
+//called before the setup() - loads the start page and background
 function preload(){
   rat = loadImage("PINK_RAT.png");
   myFont = loadFont("font.ttf");
@@ -36,8 +36,6 @@ function preload(){
 
 function setup() {
 
-  //angleMode(DEGREES); //spinning
-
   mode = 0; //initially the game has not started
 
   createCanvas(400, 400);
@@ -48,6 +46,7 @@ function setup() {
 
 function draw() {
 
+  //when the game hasn't started, display start page | when game has started, display background
   clear();
   if (mode==0){
     background(bg_two);
@@ -59,42 +58,33 @@ function draw() {
   fill('white');
 
   //Player-Paddle1 - change mouseX to button or joystick for console version
-  image(lid,mouseX, 360, 80, 30); //change rect to bin lid
+  image(lid,mouseX, 360, 80, 30); //bin lid paddle
 
   //Computer-Paddle2 
-  image(lidTwo,xBall-50,20,80,30); //change rect to bin lid
+  image(lidTwo,xBall-50,20,80,30); //bin lid paddle
+
+  //Ball
+  image(rat, xBall, yBall, 30,30); //rat ball
   
-  //push();
-  //translate(20,20)
- // rotate(a);
- // a=a+1;
-  image(rat, xBall, yBall, 30,30); //change circle to rat
- // pop();
-  
-  //Function calls
+  //Custom function calls
   bounce();
   paddle1();
   paddle2();
 
-  // setTimeout(fail, 1000); attempt to make the game fail after x amount of time
-
-  //Score
+  //Score text
   textSize(15);
   text("CPU:£" + computer,10,15);
   text("Player:£" + player,305,15);
 }
-
-
-  // animateText();
 }
 
-
-//Bounce back from sides of the canvas and game over
 function bounce() {
-let words = ['PAY YOUR TAXES','FEED YOUR CAT','YOU NEED FOOD, \nGO SHOPPING',"GET A PRESCRIPTION"];
-let word = random(words);
-let intArray = (int(500,2000));
-let intArrays = random(intArray);
+let words = ["PAY YOUR TAXES", "FEED YOUR CAT", "YOU NEED FOOD", "GO SHOPPING", "GET A PRESCRIPTION"];
+let word = random(words); //randomises the order in which the text is displayed
+
+let intArray = (int(500,2000)); //calculates an intArray number
+let intArrays = random(intArray); //calculates a random intArrays number
+let intArrays1 = round(intArrays); //rounds the intArrays value to a whole number
 
   //defines the space in which the ball can move (bounces off the 'walls' of the canvas)
   if (xBall < 10 || xBall > 350) {
@@ -103,27 +93,16 @@ let intArrays = random(intArray);
   if (yBall < 10 || yBall > 400) {
     ySpeed = -ySpeed;
   }
-  //change all text
+  
+  //displays 'lose' background and displays text from the array
   if (yBall < 10 || yBall > 400) {
     background(bg_three);
     textSize(20);
     noLoop();
     textSize(32);
     text(word, 100, 180);
-    text("-£"+ intArrays, 200,240)
-    player = player - intArrays;
-   //speed up when the player loses
-  //if (computer > player){
-	//text("Computer Wins",130,150);
-  //player = player - 150;
-	//}
-	//if (computer < player){
-	//text("Player Wins",130,150);
-	//}
-	//if (computer == player){
-	//text("PAY YA MUM",130,150);
-  //player = player - 50; //subtracts £50 to the score
-	//}
+    text("-£"+ intArrays1, 100,240)
+    player = player - intArrays1;
   }
   }
 
@@ -143,7 +122,7 @@ function paddle2() {
   }
 }
 
-//Initialise the game on mouse press - can be changed to a button for the consol version
+//Initialise the game on mouse press - can be changed to a button or joystick for the console version
 function mousePressed() {
   if (mousePressed){
   mode = 1;
@@ -154,25 +133,6 @@ function mousePressed() {
   }
 
 }
-
-
-//doesnt work
-// function fail(){
-
-//   setTimeout(fail,1000);
-//   paddle1 = (20, 360, 80, 30);
-
-
-// }
-
-
-
-
-
-
-
-
-
 
 
 
