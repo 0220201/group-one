@@ -32,6 +32,9 @@ function preload(){
   bg = loadImage('bottom_square.jpg');
   bg_two = loadImage('top_square.jpg');
   bg_three = loadImage('end_square.jpg');
+
+  //loads to game audio (does this work?)
+  gameAudio = loadSound('GameAudio.m4a');
 }
 
 function setup() {
