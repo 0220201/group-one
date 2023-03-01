@@ -25,7 +25,7 @@ let currentIndex = 0;
 
 //called before the setup() - loads the start page and background
 function preload(){
-  rat = loadImage("PINK_RAT.png");
+  rat = loadImage("grey_rat.png");
   myFont = loadFont("font.ttf");
   lid = loadImage("bin_lid.png");
   lidTwo = loadImage("bin_lid_cpu.png");
@@ -114,7 +114,7 @@ let intArrays1 = round(intArrays); //rounds the intArrays value to a whole numbe
 
 //Bounce from player paddle - ball movement
 function paddle1() {
-  if ((xBall > mouseX && xBall < mouseX + 10) && (yBall >= 335)) {
+  if ((xBall > mouseX && xBall < mouseX + 10) && (yBall >= 335)) { // made it so that the ball only bounces from the player paddle at a very small section of the paddle, to make it more impossible
     ySpeed = -ySpeed; 
     player = player + 5; //adds £5 to the score
   }
